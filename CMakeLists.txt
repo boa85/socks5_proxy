@@ -5,9 +5,24 @@ project(socks5_proxy)
 find_package(Boost REQUIRED COMPONENTS system program_options coroutine)
 find_package(Threads REQUIRED)
 
+set(HEADERS
+        "exceptions/include/exception.h"
+        "global/include/global.h"
+        "global/include/global_p.h"
+        "server/include/server.h"
+        "server/include/server_p.h"
+        "session/include/session.h"
+        "session/include/session_p.h"
+        "service/include/service.h")
 set(SOURCES
-    "main.cpp"
-)
+        "exceptions/src/exception.cpp"
+        "main.cpp"
+        "global/src/global.cpp"
+        "server/src/server.cpp"
+        "session/src/session.cpp"
+        "service/src/service.cpp"
+        )
+
 
 add_executable(socks5_proxy ${SOURCES} ${HEADERS})
 target_compile_features(socks5_proxy PRIVATE cxx_auto_type)
