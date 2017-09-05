@@ -40,32 +40,32 @@ namespace socks5_proxy {
         }
 
         void Server::Private::doV4Accept() {
-            this->v4Acceptor_.async_accept(this->socket_, [this](const ErrorCode &ec) -> void {
+            v4Acceptor_.async_accept(socket_, [this](const ErrorCode &ec) -> void {
                 if (ec) {
                     reportError("do V4 accept", ec);
                 } else {
-                    std::make_shared<Session>(std::move(this->socket_))->start();
+                    std::make_shared<Session>(std::move(socket_))->start();
                 }
 
-                this->doV4Accept();
+                doV4Accept();
             });
         }
 
         void Server::Private::doV6Listen(uint16_t port) {
             EndPoint ep(ba::ip::tcp::v6(), port);
-            this->v6Acceptor_.open(ep.protocol());
-            this->v6Acceptor_.set_option(Acceptor::reuse_address(true));
-            this->v6Acceptor_.set_option(ba::ip::v6_only(true));
-            this->v6Acceptor_.bind(ep);
-            this->v6Acceptor_.listen();
+            v6Acceptor_.open(ep.protocol());
+            v6Acceptor_.set_option(Acceptor::reuse_address(true));
+            v6Acceptor_.set_option(ba::ip::v6_only(true));
+            v6Acceptor_.bind(ep);
+            v6Acceptor_.listen();
         }
 
         void Server::Private::doV6Accept() {
-            this->v6Acceptor_.async_accept(this->socket_, [this](const ErrorCode &ec) -> void {
+            this->v6Acceptor_.async_accept(socket_, [this](const ErrorCode &ec) -> void {
                 if (ec) {
                     reportError("doV6Accept", ec);
                 } else {
-                    std::make_shared<Session>(std::move(this->socket_))->start();
+                    std::make_shared<Session>(std::move(socket_))->start();
                 }
 
                 this->doV6Accept();

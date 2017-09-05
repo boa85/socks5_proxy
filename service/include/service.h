@@ -18,7 +18,7 @@ namespace socks5_proxy {
         namespace b_sys = boost::system;
         namespace po = boost::program_options;
         namespace ph = std::placeholders;
-
+        namespace ba = boost::asio;
         using Chunk = std::array<uint8_t, 8192>;
         using IOLoop = boost::asio::io_service;
         using AddressV4 = boost::asio::ip::address_v4;
