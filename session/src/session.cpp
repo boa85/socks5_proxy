@@ -181,7 +181,7 @@ namespace socks5_proxy {
             }
         }
 
-        std::size_t fill_ipv4(socks5_proxy::Chunk &buffer, std::size_t offset) {
+        std::size_t fillIpv4(socks5_proxy::Chunk &buffer, std::size_t offset) {
             // ATYP
             buffer[offset++] = 0x01;
 
@@ -193,7 +193,7 @@ namespace socks5_proxy {
             return 1 + bytes.size();
         }
 
-        std::size_t fill_ipv6(socks5_proxy::Chunk &buffer, std::size_t offset) {
+        std::size_t fillIpv6(socks5_proxy::Chunk &buffer, std::size_t offset) {
             // ATYP
             buffer[offset++] = 0x04;
 
@@ -205,7 +205,7 @@ namespace socks5_proxy {
             return 1 + bytes.size();
         }
 
-        std::size_t fill_magic(socks5_proxy::Chunk &buffer, std::size_t offset) {
+        std::size_t fillMagic(socks5_proxy::Chunk &buffer, std::size_t offset) {
             // ATYP
             buffer[offset++] = 0x03;
 
@@ -230,13 +230,13 @@ namespace socks5_proxy {
             std::size_t used_byte = 0;
             switch (Application::instance().getHttpHostType()) {
                 case AddressType::IPV4:
-                    used_byte = fill_ipv4(chunk, 3);
+                    used_byte = fillIpv4(chunk, 3);
                     break;
                 case AddressType::IPV6:
-                    used_byte = fill_ipv6(chunk, 3);
+                    used_byte = fillIpv6(chunk, 3);
                     break;
                 case AddressType::MAGIC:
-                    used_byte = fill_magic(chunk, 3);
+                    used_byte = fillMagic(chunk, 3);
                     break;
                 default:
                     throw Socks5Error("unknown target http address");

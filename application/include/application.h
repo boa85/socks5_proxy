@@ -18,7 +18,7 @@ namespace socks5_proxy {
         enum class AddressType {
             IPV4,
             IPV6,
-            FQDN,
+            MAGIC,
             UNKNOWN,
         };
 

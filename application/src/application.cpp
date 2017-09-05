@@ -195,7 +195,7 @@ namespace socks5_proxy {
             ErrorCode ec;
             auto address = Address::from_string(http_host, ec);
             if (ec) {
-                this->httpHostType_ = AddressType::FQDN;
+                this->httpHostType_ = AddressType::MAGIC;
                 this->httpHostFqdn_ = http_host;
             } else if (address.is_v4()) {
                 this->httpHostType_ = AddressType::IPV4;
