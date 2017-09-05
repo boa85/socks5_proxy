@@ -1,7 +1,3 @@
-//
-// Created by boa on 05.09.17.
-//
-
 
 
 

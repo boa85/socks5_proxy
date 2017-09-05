@@ -7,8 +7,8 @@ find_package(Threads REQUIRED)
 
 set(HEADERS
         "exceptions/include/exception.h"
-        "global/include/global.h"
-        "global/include/global_p.h"
+        "application/include/application.h"
+        "application/include/application_p.h"
         "server/include/server.h"
         "server/include/server_p.h"
         "session/include/session.h"
@@ -17,7 +17,7 @@ set(HEADERS
 set(SOURCES
         "exceptions/src/exception.cpp"
         "main.cpp"
-        "global/src/global.cpp"
+        "application/src/application.cpp"
         "server/src/server.cpp"
         "session/src/session.cpp"
         "service/src/service.cpp"
