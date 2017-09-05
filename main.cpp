@@ -5,7 +5,7 @@ int main(int argc, char * argv[]) {
     socks5_proxy::application::Application app(argc, argv);
 
     if (int code = app.prepare() != 0) {
-        return 0 ? code == -1 : code;
+        return code;
     }
 
     socks5_proxy::server::Server server(app.ioLoop());
