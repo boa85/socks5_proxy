@@ -12,6 +12,7 @@
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/program_options.hpp>
 #include <boost/asio/signal_set.hpp>
+#include <boost/asio/spawn.hpp>
 
 namespace socks5_proxy {
     namespace service {
@@ -31,6 +32,10 @@ namespace socks5_proxy {
         using OptionMap = boost::program_options::variables_map;
         using SignalHandler = boost::asio::signal_set;
         using Address = boost::asio::ip::address;
+        using YieldContext = boost::asio::yield_context;
+        using Resolver = boost::asio::ip::tcp::resolver;
+        using ResolvedRange = std::pair<Resolver::iterator, Resolver::iterator>;
+
 
     }
 }

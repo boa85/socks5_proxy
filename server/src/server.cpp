@@ -11,7 +11,7 @@
 namespace socks5_proxy {
     namespace server {
         using namespace application;
-
+        using namespace session;
 
         Server::Server(IOLoop &loop)
                 : pServer_(std::make_shared<Server::Private>(loop)) {
