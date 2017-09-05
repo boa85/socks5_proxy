@@ -20,7 +20,6 @@ set(SOURCES
         "application/src/application.cpp"
         "server/src/server.cpp"
         "session/src/session.cpp"
-        "service/src/service.cpp"
         )
 
 
